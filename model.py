@@ -192,3 +192,32 @@ def bonferroni_correction(p_values, alpha):
     adjusted_alpha = alpha / m
     return p_vals <= adjusted_alpha
 
+# Step 14 - benjamini_hochberg_correction
+import numpy as np
+
+def benjamini_hochberg_correction(p_values, alpha):
+    """Return a boolean array marking BH-significant hypotheses at level alpha."""
+    p_vals = np.asarray(p_values, dtype=float)
+    m = len(p_vals)
+    if m == 0:
+        return np.array([], dtype=bool)
+    
+    sorted_idx = np.argsort(p_vals)
+    sorted_p = p_vals[sorted_idx]
+    
+    ranks = np.arange(1, m + 1)
+    below_threshold = sorted_p <= (ranks / m) * alpha
+    
+    if not np.any(below_threshold):
+        return np.zeros(m, dtype=bool)
+    
+    max_idx = np.max(np.where(below_threshold)[0])
+    
+    significant_sorted = np.zeros(m, dtype=bool)
+    significant_sorted[:max_idx + 1] = True
+    
+    significant = np.zeros(m, dtype=bool)
+    significant[sorted_idx] = significant_sorted
+    
+    return significant
+
