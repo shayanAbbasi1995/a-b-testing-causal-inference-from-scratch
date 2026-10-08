@@ -19,6 +19,7 @@ python scaffold.py
 - [x] **7.** unpooled_standard_error
 - [x] **8.** confidence_interval_from_se
 - [x] **9.** required_sample_size_per_variant
+- [x] **10.** statistical_power
 
 ---
 

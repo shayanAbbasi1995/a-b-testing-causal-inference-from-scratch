@@ -125,3 +125,23 @@ def required_sample_size_per_variant(baseline_rate, minimum_detectable_effect, a
     
     return math.ceil(n)
 
+# Step 10 - statistical_power
+import math
+
+def statistical_power(sample_size_per_variant, baseline_rate, effect_size, alpha):
+    # TODO: return the power of a two-proportion z-test for the given design
+    p1 = baseline_rate
+    p2 = baseline_rate + effect_size
+    n = sample_size_per_variant
+    
+    p_bar = (p1 + p2) / 2.0
+    z_alpha = statistics.NormalDist().inv_cdf(1.0 - (alpha / 2.0))
+    
+    numerator = (abs(p1 - p2) * math.sqrt(n)) - (z_alpha * math.sqrt(2.0 * p_bar * (1.0 - p_bar)))
+    denominator = math.sqrt((p1 * (1.0 - p1)) + (p2 * (1.0 - p2)))
+    
+    z_beta = numerator / denominator
+    power = statistics.NormalDist().cdf(z_beta)
+    
+    return power
+
