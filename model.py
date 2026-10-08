@@ -221,3 +221,9 @@ def benjamini_hochberg_correction(p_values, alpha):
     
     return significant
 
+# Step 15 - group_mean_change
+def group_mean_change(pre_outcomes, post_outcomes):
+    pre_arr = np.asarray(pre_outcomes, dtype=float)
+    post_arr = np.asarray(post_outcomes, dtype=float)
+    return float(np.mean(post_arr) - np.mean(pre_arr))
+

@@ -24,6 +24,7 @@ python scaffold.py
 - [x] **12.** sample_ratio_mismatch_check
 - [x] **13.** bonferroni_correction
 - [x] **14.** benjamini_hochberg_correction
+- [x] **15.** group_mean_change
 
 ---
 
