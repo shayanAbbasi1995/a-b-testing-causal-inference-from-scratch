@@ -54,3 +54,8 @@ def pooled_standard_error(pooled_p, total_a, total_b):
     
     return pooled_p
 
+# Step 5 - two_proportion_z_statistic
+def two_proportion_z_statistic(p_a, p_b, pooled_se):
+    z_score = (p_b - p_a) / pooled_se
+    return z_score
+

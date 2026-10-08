@@ -14,6 +14,7 @@ python scaffold.py
 - [x] **2.** standard_normal_ppf
 - [x] **3.** pooled_proportion
 - [x] **4.** pooled_standard_error
+- [x] **5.** two_proportion_z_statistic
 
 ---
 
