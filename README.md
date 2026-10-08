@@ -20,6 +20,7 @@ python scaffold.py
 - [x] **8.** confidence_interval_from_se
 - [x] **9.** required_sample_size_per_variant
 - [x] **10.** statistical_power
+- [x] **11.** chi_square_statistic
 
 ---
 

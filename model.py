@@ -145,3 +145,17 @@ def statistical_power(sample_size_per_variant, baseline_rate, effect_size, alpha
     
     return power
 
+# Step 11 - chi_square_statistic
+def chi_square_statistic(observed_counts, expected_counts):
+    # TODO: return the Pearson chi-square statistic comparing observed to expected counts.
+    if len(observed_counts) != len(expected_counts):
+        raise ValueError("Observed and expected counts must have the same length.")
+    
+    chi_sq = 0.0
+    for o, e in zip(observed_counts, expected_counts):
+        if e == 0:
+            raise ValueError("Expected counts cannot be zero.")
+        chi_sq += ((o - e) ** 2) / e
+        
+    return chi_sq
+
