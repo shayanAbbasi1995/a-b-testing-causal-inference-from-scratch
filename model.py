@@ -80,3 +80,16 @@ def unpooled_standard_error(successes_a, total_a, successes_b, total_b):
     unpooled_se = math.sqrt(((p_a * (1 - p_a)) / total_a) + ((p_b * (1 - p_b)) / total_b))
     return unpooled_se
 
+# Step 8 - confidence_interval_from_se
+def confidence_interval_from_se(point_estimate, standard_error, confidence_level):
+    # TODO: build a two-sided normal-approximation CI (lower, upper) from estimate and SE
+    if confidence_level >= 100 or confidence_level <= 0:
+        return float("nan")
+    
+    alpha = 1-confidence_level
+    critical_z = standard_normal_ppf(1 - (alpha/2))
+    lo = point_estimate - (critical_z * standard_error)
+    hi = point_estimate + (critical_z * standard_error)
+
+    return (round(lo,4), round(hi,4))
+
