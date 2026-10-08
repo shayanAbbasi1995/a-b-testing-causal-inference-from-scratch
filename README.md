@@ -31,6 +31,7 @@ python scaffold.py
 - [x] **19.** did_effect_from_regression
 - [x] **20.** fit_synthetic_control_weights
 - [x] **21.** synthetic_control_effect
+- [x] **22.** ship_decision
 
 ---
 

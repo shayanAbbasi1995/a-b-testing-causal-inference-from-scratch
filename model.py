@@ -309,3 +309,27 @@ def synthetic_control_effect(treated_post, donor_post, weights):
         'average_effect': average_effect
     }
 
+# Step 22 - ship_decision
+def ship_decision(primary_result, guardrail_results):
+
+    if primary_result['p_value'] >= primary_result['alpha']:
+        return {'ship': False, 'reason': 'primary metric not significant'}
+    
+    if primary_result['effect'] <= 0:
+        return {'ship': False, 'reason': 'primary metric effect not positive'}
+    
+    for i, g in enumerate(guardrail_results):
+        is_sig = g['p_value'] < g['alpha']
+        if not is_sig:
+            continue
+            
+        harm_dir = g['harm_direction']
+        effect = g['effect']
+        
+        harmed = (harm_dir == 'negative' and effect < 0) or (harm_dir == 'positive' and effect > 0)
+        
+        if harmed:
+            return {'ship': False, 'reason': f'guardrail {i} harmed'}
+            
+    return {'ship': True, 'reason': 'ship'}
+
