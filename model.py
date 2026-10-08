@@ -291,3 +291,21 @@ def fit_synthetic_control_weights(treated_pre, donor_pre, num_iterations=5000, l
     
     return w
 
+# Step 21 - synthetic_control_effect
+def synthetic_control_effect(treated_post, donor_post, weights):
+    y_post = np.asarray(treated_post, dtype=float)
+    X_post = np.asarray(donor_post, dtype=float)
+    w = np.asarray(weights, dtype=float)
+    
+    synthetic = X_post @ w
+    
+    gap = y_post - synthetic
+    
+    average_effect = float(np.mean(gap))
+    
+    return {
+        'synthetic': synthetic,
+        'gap': gap,
+        'average_effect': average_effect
+    }
+
