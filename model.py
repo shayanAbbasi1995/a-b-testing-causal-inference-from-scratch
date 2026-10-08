@@ -59,3 +59,9 @@ def two_proportion_z_statistic(p_a, p_b, pooled_se):
     z_score = (p_b - p_a) / pooled_se
     return z_score
 
+# Step 6 - two_sided_p_value
+def two_sided_p_value(z):
+    # TODO: convert a z-statistic into a two-sided p-value under the standard normal
+    p_value = 2 * (1 - standard_normal_cdf(np.abs(z)))
+    return p_value
+
