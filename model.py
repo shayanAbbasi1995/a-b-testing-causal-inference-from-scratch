@@ -44,3 +44,13 @@ def pooled_proportion(successes_a, total_a, successes_b, total_b):
 
     return p_hat
 
+# Step 4 - pooled_standard_error
+import math
+
+def pooled_standard_error(pooled_p, total_a, total_b):
+    """Standard error of the difference in two proportions under the pooled null."""
+    # TODO: compute sqrt( p*(1-p) * (1/n_a + 1/n_b) ) using the pooled proportion.
+    pooled_p = math.sqrt(pooled_p * (1-pooled_p) * ((1/total_a) + (1/total_b)))
+    
+    return pooled_p
+
