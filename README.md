@@ -28,6 +28,7 @@ python scaffold.py
 - [x] **16.** difference_in_differences_simple
 - [x] **17.** build_did_design_matrix
 - [x] **18.** ols_normal_equations
+- [x] **19.** did_effect_from_regression
 
 ---
 

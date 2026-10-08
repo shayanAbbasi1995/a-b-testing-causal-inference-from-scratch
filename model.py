@@ -255,3 +255,9 @@ def ols_normal_equations(design_matrix, outcomes):
     beta = np.linalg.solve(A, b)
     return beta
 
+# Step 19 - did_effect_from_regression
+def did_effect_from_regression(treatment_indicator, post_indicator, outcomes):
+    X = build_did_design_matrix(treatment_indicator, post_indicator)
+    beta = ols_normal_equations(X, outcomes)
+    return float(beta[3])
+
