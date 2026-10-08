@@ -227,3 +227,9 @@ def group_mean_change(pre_outcomes, post_outcomes):
     post_arr = np.asarray(post_outcomes, dtype=float)
     return float(np.mean(post_arr) - np.mean(pre_arr))
 
+# Step 16 - difference_in_differences_simple
+def difference_in_differences_simple(treated_pre, treated_post, control_pre, control_post):
+    treated_change = group_mean_change(treated_pre, treated_post)
+    control_change = group_mean_change(control_pre, control_post)
+    return float(treated_change - control_change)
+
