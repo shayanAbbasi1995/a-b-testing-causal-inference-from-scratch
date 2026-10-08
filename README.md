@@ -26,6 +26,7 @@ python scaffold.py
 - [x] **14.** benjamini_hochberg_correction
 - [x] **15.** group_mean_change
 - [x] **16.** difference_in_differences_simple
+- [x] **17.** build_did_design_matrix
 
 ---
 

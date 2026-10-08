@@ -233,3 +233,14 @@ def difference_in_differences_simple(treated_pre, treated_post, control_pre, con
     control_change = group_mean_change(control_pre, control_post)
     return float(treated_change - control_change)
 
+# Step 17 - build_did_design_matrix
+def build_did_design_matrix(treatment_indicator, post_indicator):
+    T = np.asarray(treatment_indicator, dtype=float)
+    P = np.asarray(post_indicator, dtype=float)
+    n = len(T)
+    
+    intercept = np.ones(n, dtype=float)
+    interaction = T * P
+    
+    return np.column_stack([intercept, T, P, interaction])
+
