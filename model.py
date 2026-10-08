@@ -244,3 +244,14 @@ def build_did_design_matrix(treatment_indicator, post_indicator):
     
     return np.column_stack([intercept, T, P, interaction])
 
+# Step 18 - ols_normal_equations
+def ols_normal_equations(design_matrix, outcomes):
+    X = np.asarray(design_matrix, dtype=float)
+    y = np.asarray(outcomes, dtype=float)
+    
+    A = X.T @ X
+    b = X.T @ y
+    
+    beta = np.linalg.solve(A, b)
+    return beta
+
