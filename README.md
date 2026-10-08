@@ -22,6 +22,7 @@ python scaffold.py
 - [x] **10.** statistical_power
 - [x] **11.** chi_square_statistic
 - [x] **12.** sample_ratio_mismatch_check
+- [x] **13.** bonferroni_correction
 
 ---
 

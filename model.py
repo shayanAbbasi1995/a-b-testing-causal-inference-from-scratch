@@ -180,3 +180,15 @@ def sample_ratio_mismatch_check(observed_counts, expected_ratios, alpha):
         'srm_detected': bool(srm_detected)
     }
 
+# Step 13 - bonferroni_correction
+import numpy as np
+
+def bonferroni_correction(p_values, alpha):
+    p_vals = np.array(p_values, dtype=float)
+    m = p_vals.size
+    if m == 0:
+        return np.array([], dtype=bool)
+    
+    adjusted_alpha = alpha / m
+    return p_vals <= adjusted_alpha
+
