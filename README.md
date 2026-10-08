@@ -29,6 +29,7 @@ python scaffold.py
 - [x] **17.** build_did_design_matrix
 - [x] **18.** ols_normal_equations
 - [x] **19.** did_effect_from_regression
+- [x] **20.** fit_synthetic_control_weights
 
 ---
 

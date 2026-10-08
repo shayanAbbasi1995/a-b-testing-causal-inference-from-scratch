@@ -261,3 +261,33 @@ def did_effect_from_regression(treatment_indicator, post_indicator, outcomes):
     beta = ols_normal_equations(X, outcomes)
     return float(beta[3])
 
+# Step 20 - fit_synthetic_control_weights
+def fit_synthetic_control_weights(treated_pre, donor_pre, num_iterations=5000, learning_rate=0.01):
+    y = np.asarray(treated_pre, dtype=float)
+    X = np.asarray(donor_pre, dtype=float)
+    
+    n_donors = X.shape[1]
+    theta = np.zeros(n_donors, dtype=float)
+    
+    for _ in range(num_iterations):
+        # Softmax
+        shifted_theta = theta - np.max(theta)
+        exp_theta = np.exp(shifted_theta)
+        w = exp_theta / np.sum(exp_theta)
+        
+        r = (X @ w) - y
+        g_w = X.T @ r
+        
+        # softmax Jacobian
+        w_dot_gw = np.dot(w, g_w)
+        g_theta = w * (g_w - w_dot_gw)
+        
+        # Gradient descent update
+        theta -= learning_rate * g_theta
+        
+    shifted_theta = theta - np.max(theta)
+    exp_theta = np.exp(shifted_theta)
+    w = exp_theta / np.sum(exp_theta)
+    
+    return w
+
